@@ -1,0 +1,133 @@
+---
+  import PostCard from "./PostCard.astro"
+  import Image from "astro:assets"
+  import User1Img from "../users/user-1.jpg"
+  import User2Img from "../users/user-2.jpg"
+  import User3Img from "../users/user-3.jpg"
+  import User4Img from "../users/user-4.jpg"
+  import User5Img from "../users/user-5.jpg"
+  import User6Img from "../users/user-6.jpg"
+  import User7Img from "../users/user-7.jpg"
+import type { Post } from "../services/models"
+
+
+  const posts: Post[] = [ {
+    name: "John Michael",
+    time: "3 hours ago ",
+    content: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Quis voluptatem veritatis harum, tenetur, quibusdam
+        voluptatum, incidunt saepe minus maiores ea atque sequi
+        illo veniam sint quaerat corporis totam et. Culpa?`,
+    likes: 78,
+    noOfComments: 18,
+    userImg: User1Img,
+    img: ""
+  } ]
+
+---
+
+<div class="col-md-6 second-section" id="page-content-wrapper">
+    <div class="mb-3">
+      <div class="btn-group d-flex">
+        <a
+          href="index.html"
+          class="btn btn-quick-links mr-3 ql-active"
+        >
+          <img
+            src="../assets/images/icons/theme/speech.png"
+            class="mr-2"
+            alt="quick links icon"
+          />
+          <span class="fs-8">Speech</span>
+        </a>
+        <a href="messages.html" class="btn btn-quick-links mr-3">
+          <img
+            src="../assets/images/icons/theme/listen.png"
+            class="mr-2"
+            alt="quick links icon"
+          />
+          <span class="fs-8">Listen</span>
+        </a>
+        <a href="watch.html" class="btn btn-quick-links">
+          <img
+            src="../assets/images/icons/theme/watch.png"
+            class="mr-2"
+            alt="quick links icon"
+          />
+          <span class="fs-8">Watch</span>
+        </a>
+      </div>
+    </div>
+    <ul class="list-unstyled" style="margin-bottom: 0">
+      <li class="media post-form w-shadow">
+        <div class="media-body">
+          <div class="form-group post-input">
+            <textarea
+              class="form-control"
+              id="postForm"
+              rows="2"
+              placeholder="What's on your mind, Arthur?"></textarea>
+          </div>
+          <div class="row post-form-group">
+            <div class="col-md-9">
+              <button
+                type="button"
+                class="btn btn-link post-form-btn btn-sm"
+              >
+                <img
+                  src="../assets/images/icons/theme/post-image.png"
+                  alt="post form icon"
+                />
+                <span>Photo/Video</span>
+              </button>
+              <button
+                type="button"
+                class="btn btn-link post-form-btn btn-sm"
+              >
+                <img
+                  src="../assets/images/icons/theme/tag-friend.png"
+                  alt="post form icon"
+                />
+                <span>Tag Friends</span>
+              </button>
+              <button
+                type="button"
+                class="btn btn-link post-form-btn btn-sm"
+              >
+                <img
+                  src="../assets/images/icons/theme/check-in.png"
+                  alt="post form icon"
+                />
+                <span>Check In</span>
+              </button>
+            </div>
+            <div class="col-md-3 text-right">
+              <button type="button" class="btn btn-primary btn-sm">
+                Publish
+              </button>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <!-- Posts -->
+    <div class="posts-section mb-5">
+      {
+        posts?.map((post) => (
+          <PostCard post={post} />
+        ))
+      }
+      <div class="d-flex justify-content-center my-5 load-post">
+        <button
+          type="button"
+          class="btn btn-quick-link join-group-btn border shadow"
+          data-toggle="tooltip"
+          data-placement="top"
+          data-title="Load More Post"
+        >
+          <i class="bx bx-dots-horizontal-rounded"></i>
+        </button>
+      </div>
+    </div>
+  </div>

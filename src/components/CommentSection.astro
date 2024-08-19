@@ -1,0 +1,118 @@
+---
+import CommentCard from "./CommentCard.astro"
+import type { Comment } from "../services/models";
+import User2Img from "../users/user-2.jpg"
+import { Image } from "astro:assets";
+import User4Img from "../users/user-4.jpg"
+
+
+const comments: Comment[] = [
+    {
+        name:"Karen Minas",
+        time:"30 min ago",
+        content:"Blessed",
+        userImg: User2Img,
+    },
+
+]
+
+    
+
+---
+
+<div
+      class="border-top pt-3 hide-comments"
+      style="display: none"
+    >
+      <div class="row bootstrap snippets">
+        <div class="col-md-12">
+          <div class="comment-wrapper">
+            <div class="panel panel-info">
+              <div class="panel-body">
+                <ul class="media-list comments-list">
+                  <li class="media comment-form">
+                    <a href="#" class="pull-left">
+                        <Image src={User4Img} alt="User Image"  />
+                    </a>
+                    <div class="media-body">
+                      <form action="" method="" role="form">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="input-group">
+                              <input
+                                type="text"
+                                class="form-control comment-input"
+                                placeholder="Write a comment..."
+                              />
+
+                              <div class="input-group-btn">
+                                <button
+                                  type="button"
+                                  class="btn comment-form-btn"
+                                  data-toggle="tooltip"
+                                  data-placement="top"
+                                  title="Tooltip on top"
+                                >
+                                  <i class="bx bxs-smiley-happy"
+                                  ></i>
+                                </button>
+                                <button
+                                  type="button"
+                                  class="btn comment-form-btn comment-form-btn"
+                                  data-toggle="tooltip"
+                                  data-placement="top"
+                                  title="Tooltip on top"
+                                >
+                                  <i class="bx bx-camera"></i>
+                                </button>
+                                <button
+                                  type="button"
+                                  class="btn comment-form-btn comment-form-btn"
+                                  data-toggle="tooltip"
+                                  data-placement="top"
+                                  title="Tooltip on top"
+                                >
+                                  <i class="bx bx-microphone"></i>
+                                </button>
+                                <button
+                                  type="button"
+                                  class="btn comment-form-btn"
+                                  data-toggle="tooltip"
+                                  data-placement="top"
+                                  title="Tooltip on top"
+                                >
+                                  <i class="bx bx-file-blank"></i>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </li>
+
+                  {
+                    comments?.map((comment) => (
+                        <CommentCard comment={comment}/>
+                    ))
+                  }
+
+                  <li class="media">
+                    <div class="media-body">
+                      <div class="comment-see-more text-center">
+                        <button
+                          type="button"
+                          class="btn btn-link fs-8"
+                        >
+                          See More
+                        </button>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

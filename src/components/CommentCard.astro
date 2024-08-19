@@ -1,0 +1,51 @@
+---
+import type { Comment } from "../services/models"
+import { Image } from "astro:assets"
+interface Props {
+    comment: Comment
+}
+
+const {comment: {userImg, name, time, content}} = Astro.props
+---
+
+<li class="media">
+    <a href="#" class="pull-left">
+      <Image src={userImg} alt="" class="img-circle" />
+    </a>
+    <div class="media-body">
+      <div
+        class="d-flex justify-content-between align-items-center w-100"
+      >
+        <strong class="text-gray-dark"
+          ><a href="#" class="fs-8">{name}</a
+          ></strong
+        >
+        <a href="#"
+          ><i
+            class="bx bx-dots-horizontal-rounded"
+          ></i></a
+        >
+      </div>
+      <span class="d-block comment-created-time"
+        >{time}</span
+      >
+      <p class="fs-8 pt-2">
+        {content}
+        <a href="#">#consecteturadipiscing </a>.
+      </p>
+      <div class="commentLR">
+        <button
+          type="button"
+          class="btn btn-link fs-8"
+        >
+          Like
+        </button>
+        <button
+          type="button"
+          class="btn btn-link fs-8"
+        >
+          Reply
+        </button>
+      </div>
+    </div>
+  </li>

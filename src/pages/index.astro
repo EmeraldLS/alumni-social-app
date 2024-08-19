@@ -1,0 +1,32 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Navbar from "../components/Navbar.astro";
+import LeftBar from "../components/LeftBar.astro"
+import NewsFeed from "../components/NewsFeed.astro"
+import RightBar from "../components/RightBar.astro"
+
+
+import User1Img from "../users/user-1.jpg"
+import { Image } from "astro:assets";
+---
+
+<MainLayout>
+  <body class="newsfeed">
+    <div class="container-fluid" id="wrapper">
+      <div class="row newsfeed-size">
+        <div class="col-md-12 newsfeed-right-side">
+          <Navbar />
+          <div class="row newsfeed-right-side-content mt-3">
+            <div
+              class="col-md-3 newsfeed-left-side sticky-top shadow-sm"
+              id="sidebar-wrapper"
+            >
+              <LeftBar />
+            </div>
+            <NewsFeed />
+            <RightBar />
+          </div>
+        </div>
+      </div>
+    </div>	
+  </MainLayout>
